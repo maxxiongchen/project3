@@ -1,0 +1,139 @@
+#include <FastLED.h>
+
+//flower01 PINK
+#define NUM1_LEDS 1
+#define DATA1_PIN 13
+
+
+CRGB leds1[NUM1_LEDS];
+float startColor1 = 192;
+float change1 = 0.1;
+int direction1 = 1;
+
+
+
+//flower02 WHITE
+#define NUM2_LEDS 1
+#define DATA2_PIN 12
+
+
+CRGB leds2[NUM2_LEDS];
+float startColor2 = 20;
+float change2 = 0.1;
+int direction2 = 1;
+
+//flower03 WHITE
+#define NUM3_LEDS 1
+#define DATA3_PIN 11
+
+
+CRGB leds3[NUM3_LEDS];
+float startColor3 = 20;
+float change3 = 0.2;
+int direction3 = 1;
+
+//flower04 PINK
+#define NUM4_LEDS 1
+#define DATA4_PIN 10
+
+
+CRGB leds4[NUM4_LEDS];
+float startColor4 = 192;
+float change4 = 0.2;
+int direction4 = 1;
+
+
+//flower05 WHITE
+#define NUM5_LEDS 1
+#define DATA5_PIN 9
+
+
+CRGB leds5[NUM5_LEDS];
+float startColor5 = 20;
+float change5 = 0.2;
+int direction5 = 1;
+
+//flower6 WHITE
+#define NUM6_LEDS 1
+#define DATA6_PIN 8
+
+
+CRGB leds6[NUM6_LEDS];
+float startColor6 = 20;
+float change6 = 0.2;
+int direction6 = 1;
+
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  FastLED.addLeds<NEOPIXEL, DATA1_PIN>(leds1, NUM1_LEDS);
+  FastLED.addLeds<NEOPIXEL, DATA2_PIN>(leds2, NUM2_LEDS);
+  FastLED.addLeds<NEOPIXEL, DATA3_PIN>(leds3, NUM3_LEDS);
+  FastLED.addLeds<NEOPIXEL, DATA4_PIN>(leds4, NUM4_LEDS);
+  FastLED.addLeds<NEOPIXEL, DATA5_PIN>(leds5, NUM5_LEDS);
+  FastLED.addLeds<NEOPIXEL, DATA6_PIN>(leds6, NUM6_LEDS);
+}
+
+void loop() {
+  // leds1 = CHSV(5,255,255);
+
+  //flower01 PINK
+  startColor1 += change1;
+  if ((startColor1 < 224) && (startColor1 > 185)) {
+    change1 = change1 ;
+  } else {
+    change1 = -change1;
+  }
+
+  //flower02 WHITE
+  startColor2 += change2;
+  if ((startColor2 < 40) && (startColor2 > 15)) {
+    change2 = change2 ;
+  } else {
+    change2 = -change2;
+  }
+
+  //flower03 WHITE
+  startColor3 += change3;
+  if ((startColor3 < 40) && (startColor3 > 15)) {
+    change3 = change3 ;
+  } else {
+    change3 = -change3;
+  }
+
+  //flower04 PINK
+  startColor4 += change4;
+  if ((startColor4 < 224) && (startColor4 > 185)) {
+    change4 = change4 ;
+  } else {
+    change4 = -change4;
+  }
+
+  //flower05 WHITE
+  startColor5 += change5;
+  if ((startColor5 < 40) && (startColor5 > 15)) {
+    change5 = change5 ;
+  } else {
+    change5 = -change5;
+  }
+
+  //flower06 WHITE
+  startColor6 += change6;
+  if ((startColor6 < 40) && (startColor6 > 15)) {
+    change6 = change6 ;
+  } else {
+    change6 = -change6;
+  }
+
+  fill_solid(leds1, 1, CHSV(startColor1, 255, 150));
+  fill_solid(leds2, 1, CHSV( startColor2, 255, 150));
+  fill_solid(leds3, 1, CHSV( startColor3, 255, 150));
+  fill_solid(leds4, 1, CHSV( startColor4, 255, 150));
+  fill_solid(leds5, 1, CHSV( startColor5, 255, 150));
+  fill_solid(leds6, 1, CHSV( startColor6, 255, 150));
+
+  FastLED.show();
+
+}
